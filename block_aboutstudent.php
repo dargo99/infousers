@@ -32,12 +32,20 @@ class block_aboutstudent extends block_base {
     }
 
     function get_content() {
+        global $DB;
+
         if ($this->content !== null) {
             return $this->content;
         }
 
+        $userstring = '';
+        $users = $DB->get_records('user');
+        foreach ($users as $user) {
+            $userstring .= $user->firstname. ' ' . $user->lastname . '<br>';
+        }
+
         $this->content = new stdClass();
-        $this->content->text = 'holi';
+        $this->content->text = $userstring;
         $this->content->footer = 'chao';
         return $this->content;
     }
