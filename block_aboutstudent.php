@@ -1,33 +1,6 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * Block definition class for the block_aboutstudent plugin.
- *
- * @package   block_aboutstudent
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 class block_aboutstudent extends block_base {
-
-    /**
-     * Initialises the block.
-     *
-     */
-    function init() {
+    public function init() {
         $this->title = get_string('pluginname', 'block_aboutstudent');
     }
 
@@ -35,17 +8,39 @@ class block_aboutstudent extends block_base {
         return true;
     }
 
+    public function specialization() {
+        if (isset($this->config)) {
+            if (empty($this->config->title)) {
+                $this->title = get_string('defaulttitle', 'block_aboutstudent');            
+            } else {
+                $this->title = $this->config->title;
+            }
+    
+            if (empty($this->config->text)) {
+                $this->config->text = get_string('defaulttext', 'block_aboutstudent');
+            }    
+        }
+    }
+
+    public function instance_allow_multiple() {
+        return true;
+    }
+
     function get_content() {
         global $DB;
+        $allowHTML = $CFG->Allow_HTML;
+        $allowHTML = get_config('aboutstudent', 'Allow_HTML');
 
         if ($this->content !== null) {
             return $this->content;
         }
 
+        $this->content = new stdClass;
+        $this->content->text = 'The content of our SimpleHTML block!';
+        $this->content->footer = 'Footer here...';
+        return $this->content;
 
-
-        //$userstring = '';
-
+        /*
         $showcourses = get_config('block_aboutstudent', 'showcourses');
 
         if($showcourses) {
@@ -61,10 +56,15 @@ class block_aboutstudent extends block_base {
             }
         }
 
-        
         $this->content = new stdClass();
         $this->content->text = $userstring;
         $this->content->footer = 'chao';
         return $this->content;
+        */
+    }
+    
+    function is_empty() {
+        $this->get_content();
+        return(empty($this->content->text) && empty($this->content->footer));
     }
 }
