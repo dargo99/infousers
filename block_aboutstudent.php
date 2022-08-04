@@ -26,19 +26,36 @@ class block_aboutstudent extends block_base {
         return true;
     }
 
+    function is_empty() {
+        $this->get_content();
+        return(empty($this->content->text) && empty($this->content->footer));
+    }
+
     function get_content() {
+        global $USER;
         global $DB;
-        $allowHTML = $CFG->Allow_HTML;
-        $allowHTML = get_config('aboutstudent', 'Allow_HTML');
 
         if ($this->content !== null) {
             return $this->content;
         }
 
+        $userid = $USER->id;
+        $userfieldid = $DB->get_records('user_info_data');
+        foreach ($userfieldid as $id) {
+            if ($id->userid == $userid) {
+                $userstatus = $id->data;
+            }
+        }
+        
         $this->content = new stdClass;
-        $this->content->text = 'The content of our SimpleHTML block!';
+        $this->content->text = "id: " . $userid . ", " . "status: " . $userstatus . "<hr>";
         $this->content->footer = 'Footer here...';
         return $this->content;
+
+        //$field = $DB->get_record('user_info_field', array('shortname' => 'estado'));
+        //$fieldvalues = $DB->get_records('user_info_data',array('fieldid' => $field->id));
+        //foreach ($fieldvalues as $status) {
+        //    $userstatus .= $fieldvalues->status . '<br>';
 
         /*
         $showcourses = get_config('block_aboutstudent', 'showcourses');
@@ -52,19 +69,10 @@ class block_aboutstudent extends block_base {
         } else {
             $users = $DB->get_records('user');
             foreach ($users as $user) {
-                $userstring .= $user->firstname. ' ' . $user->lastname . '<br>';
+                $userstring .= $user->firstname . ' ' . $user->estado . '<br>';
             }
         }
-
-        $this->content = new stdClass();
-        $this->content->text = $userstring;
-        $this->content->footer = 'chao';
-        return $this->content;
         */
-    }
-    
-    function is_empty() {
-        $this->get_content();
-        return(empty($this->content->text) && empty($this->content->footer));
+
     }
 }
