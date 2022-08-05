@@ -42,7 +42,7 @@ class block_infousers extends block_base {
         
         $this->content = new stdClass();
         $this->content->text = "holi";
-        $this->content->footer = '';
+        $this->content->footer = 'chau';
 
         return $this->content;
     }
