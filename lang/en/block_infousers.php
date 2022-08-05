@@ -1,7 +1,7 @@
 <?php
-$string['aboutstudent:addinstance'] = 'Add information about the student';
-$string['aboutstudent:myaddinstance'] = 'Add a new About student block to Dashboard';
-$string['aboutstudent'] = 'About student';
+$string['infousers:addinstance'] = 'Add information about the student';
+$string['infousers:myaddinstance'] = 'Add a new About student block to Dashboard';
+$string['infousers'] = 'About student';
 $string['pluginname'] = 'About student';
 $string['showcourses'] = 'About student';
 $string['showusersinstead'] = 'About student2';

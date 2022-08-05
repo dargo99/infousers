@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package    block_aboutstudent
+ * @package    block_infousers
  * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,4 +26,4 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2021051700;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2010112400;        // Requires this Moodle version.
-$plugin->component = 'block_aboutstudent';      // Full name of the plugin (used for diagnostics)
+$plugin->component = 'block_infousers';      // Full name of the plugin (used for diagnostics)
