@@ -1,13 +1,13 @@
 <?php
 $string['infousers:addinstance'] = 'Add information about the student';
-$string['infousers:myaddinstance'] = 'Add a new About student block to Dashboard';
-$string['infousers'] = 'About student';
-$string['pluginname'] = 'About student';
-$string['showcourses'] = 'About student';
-$string['showusersinstead'] = 'About student2';
+$string['infousers:myaddinstance'] = 'Add a new Información usuarios block to Dashboard';
+$string['infousers'] = 'Información usuarios';
+$string['pluginname'] = 'Información usuarios';
+$string['showcourses'] = 'Información usuarios';
+$string['showusersinstead'] = 'Información usuarios2';
 $string['blockstring'] = 'textoo';
-$string['defaulttitle'] = 'About student tittle';
-$string['defaulttext'] = 'About student texto xd';
+$string['defaulttitle'] = 'Información usuarios tittle';
+$string['defaulttext'] = 'Información usuarios texto xd';
 $string['blocktitle'] = 'titulo del bloque gg';
 $string['headerconfig'] = 'headerconfig string';
 $string['descconfig'] = 'descconfig string';
