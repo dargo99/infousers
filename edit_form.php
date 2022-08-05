@@ -1,5 +1,6 @@
 <?php
 
+/*
 class block_aboutstudent_edit_form extends block_edit_form {
         
     protected function specific_definition($mform) {
@@ -18,3 +19,4 @@ class block_aboutstudent_edit_form extends block_edit_form {
         $mform->setType('config_text', PARAM_RAW);
     }
 }
+*/
