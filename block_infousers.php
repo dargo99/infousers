@@ -41,6 +41,7 @@ class block_infousers extends block_base {
 
         //$renderable = new \block_infousers\output\infousers($this->config);
         //$renderer = $this->page->get_renderer('block_infousers');
+        //esto es un comentario de prueba
         
         $this->content = new stdClass();
         //$this->content->text = $renderer->render($renderable);
