@@ -25,7 +25,11 @@ namespace block_infousers\output;
 
 defined('MOODLE_INTERNAL') || die();
 
-class myprofile implements renderable, templatable {
+use renderable;
+use renderer_base;
+use templatable;
+
+class infousers implements renderable, templatable {
     
     protected $config;
 
@@ -37,6 +41,3 @@ class myprofile implements renderable, templatable {
         global $USER, $OUTPUT;
 
         $data = new \stdClass();
-
-
-        

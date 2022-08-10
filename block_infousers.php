@@ -50,38 +50,11 @@ class block_infousers extends block_base {
         return $this->content;
     }
 
-    public function has_config() {
-        return false;
-    }
-
-    public function instance_allow_multiple() {
-        return false;
-    }
-
-    function instance_allow_config() {
-        return false;
-    }
-
-    public function specialization() {
-    }
 
     public function applicable_formats() {
         return array('all'=>true);
     }
 
-    /**
-     * post install configurations
-     *
-     */
-    public function after_install() {
-    }
-
-    /**
-     * post delete configurations
-     *
-     */
-    public function before_delete() {
-    }
 
     function is_empty() {
         $this->get_content();
