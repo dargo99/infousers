@@ -1,25 +1,4 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * Class containing data for infousers block.
- *
- * @package    block_infousers
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 
 namespace block_infousers\output;
 
@@ -38,6 +17,39 @@ class infousers implements renderable, templatable {
     }
 
     public function export_for_template(renderer_base $output) {
-        global $USER, $OUTPUT;
+        global $USER, $OUTPUT, $DB;
 
-        $data = new \stdClass();
+        $current_user = new \stdClass();
+        $users = new \stdClass();
+
+        $datausers = $DB->get_records('user');
+        $customfields = $DB->get_records('user_info_data');
+        
+
+        if (!isset($this->config->display_picture) || $this->config->display_picture == 1) {
+            $current_user->userpicture = $OUTPUT->user_picture($USER, array('class' => 'userpicture'));
+        }
+
+        $current_user->userfullname = fullname($USER);
+
+        if (!isset($this->config->display_email) || $this->config->display_email == 1) {
+            $current_user->useremail = obfuscate_mailto($USER->email, '');
+        }
+
+        //field status current user
+        if (!empty($this->config->display_status) && $customfields->fieldid == 1 && $USER->id == $customfields->id) {
+            $current_user->status = $customfields->data;
+        }
+
+        //field career current user
+        if (!empty($this->config->display_career) && $customfields->fieldid == 3 && $USER->id == $customfields->id) {
+            $current_user->career = $customfields->data;
+        }
+
+        //acá voy -dargo
+
+        return $current_user;
+
+    }
+
+}

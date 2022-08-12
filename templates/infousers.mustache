@@ -1,0 +1,31 @@
+<div>
+    {{#current_userpicture}}
+    <div class="infousersitem picture">
+        {{{ current_userpicture }}}
+    </div>
+    {{/current_userpicture}}
+</div>
+<div class="w-100 no-overflow">
+    <div class="infousersitem fullname">
+        {{ current_userfullname }}
+    </div>
+    {{#current_useremail}}
+        <div class="infousersitem email">
+             <span>{{#str}} email {{/str}}:</span>
+             {{{ current_useremail }}}
+        </div>
+    {{/current_useremail}}
+    {{#current_userstatus}}
+        <div class="infousersitem status">
+            <span>{{#str}} status {{/str}}:</span>
+            {{{ current_userstatus }}}
+        </div>
+    {{/current_userstatus}}
+    {{#current_usercurrent_usercareer}}
+        <div class="infousersitem career">
+            <span>{{#str}} career {{/str}}:</span>
+            {{{ current_usercareer }}}
+        </div>
+    {{/current_usercareer}}
+</div>
+<hr />
