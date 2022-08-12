@@ -15,9 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details
+ * Current user info block.
  *
  * @package    block_infousers
+ * @copyright  2010 Remote-Learner.net
+ * @author     Olav Jordan <olav.jordan@remote-learner.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

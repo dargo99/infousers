@@ -1,31 +1,75 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_infousers/infousers
+
+    This template renders the content of the infousers block.
+
+    Classes required for JS:
+        * none
+
+        Data attributes required for JS:
+        * none
+
+        Context variables required for this template:
+        * userfullname
+
+        Optional context variables for this template:
+        * userpicture
+        * useremail
+        * userstatus
+        * usercareer
+
+    Example context (json):
+    {
+        "userpicture": "<img src='http://example.com/image.png' title='Picture of John Doe'>",
+        "userfullname": "John Doe",
+        "useremail": "<a href=''>john.doe@example.com</a>",
+        "userstatus": "Studying...",
+        "usercareer": "Software engineer"
+    }
+}}
 <div>
-    {{#current_userpicture}}
+    {{#userpicture}}
     <div class="infousersitem picture">
-        {{{ current_userpicture }}}
+        {{{ userpicture }}}
     </div>
-    {{/current_userpicture}}
+    {{/userpicture}}
 </div>
 <div class="w-100 no-overflow">
     <div class="infousersitem fullname">
-        {{ current_userfullname }}
+        {{ userfullname }}
     </div>
-    {{#current_useremail}}
+    {{#useremail}}
         <div class="infousersitem email">
              <span>{{#str}} email {{/str}}:</span>
-             {{{ current_useremail }}}
+             {{{ useremail }}}
         </div>
-    {{/current_useremail}}
-    {{#current_userstatus}}
-        <div class="infousersitem status">
-            <span>{{#str}} status {{/str}}:</span>
-            {{{ current_userstatus }}}
-        </div>
-    {{/current_userstatus}}
-    {{#current_usercurrent_usercareer}}
-        <div class="infousersitem career">
-            <span>{{#str}} career {{/str}}:</span>
-            {{{ current_usercareer }}}
-        </div>
-    {{/current_usercareer}}
+    {{/useremail}}
+    {{#userstatus}}
+    <div class="infousersitem status">
+         <span>{{#str}} status {{/str}}:</span>
+         {{ userstatus }}
+    </div>
+    {{/userstatus}}
+    {{#user}}
+    <div class="infousersitem career">
+         <span>{{#str}} career {{/str}}:</span>
+         {{ user }}
+    </div>
+    {{/user}}
 </div>
-<hr />
