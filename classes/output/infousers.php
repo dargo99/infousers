@@ -50,33 +50,49 @@ class infousers implements renderable, templatable {
 
         $data = new \stdClass();
 
-        if (!isset($this->config->display_picture) || $this->config->display_picture == 1) {
-            $data->userpicture = $OUTPUT->user_picture($USER, array('class' => 'userpicture'));
+        
+
+        $student = $DB->get_records('user');
+        foreach ($student as $id) {
+            # code...
         }
 
-        $data->userfullname = fullname($USER);
-
-        if (!isset($this->config->display_country) || $this->config->display_country == 1) {
-            $countries = get_string_manager()->get_list_of_countries(true);
-            if (isset($countries[$USER->country])) {
-                $data->usercountry = $countries[$USER->country];
-            }
-        }
-
-        if (!isset($this->config->display_email) || $this->config->display_email == 1) {
-            $data->useremail = obfuscate_mailto($USER->email, '');
-        }
-
-        // Field status current user.
-        if (!empty($this->config->display_status) && $customfields->fieldid == 1 && $USER->id == $customfields->id) {
-            $current_user->status = $customfields->data;
-        }
-
-        // Field career current user.
-        if (!empty($this->config->display_career) && $customfields->fieldid == 3 && $USER->id == $customfields->id) {
-            $current_user->career = $customfields->data;
-        }
+        //$fields = $DB->get_records('user_info_data');
 
         return $data;
+
+
+
+       /*
+        * Still need get some data...
+        *
+        $totalusers = "numero total de usuarios registrados";
+        $idusers = "array con el id de todos los usuarios";
+        $editform = "el campo está habilitado o no";
+
+        for ($i=0; $i < $totalusers; $i++) { 
+            if($idusers == $idfield && $editform == 1) {
+                $data = $ifield->name . "<br>";
+            }
+
+            if($idusers == $idfield && $editform == 1) {
+                $data = $ifield->email . "<br>";
+            }
+
+            if($idusers == $idfield && $editform == 1) {
+                $data = $ifield->status . "<br>";
+            }
+
+            if($idusers == $idfield && $editform == 1) {
+                $data = $ifield->career . "<br>";
+            }
+
+            $data = "<hr>";
+
+            $idfield = i;
+        }
+
+        */
+
     }
 }

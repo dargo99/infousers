@@ -56,6 +56,5 @@ class block_infousers_edit_form extends block_edit_form {
         } else {
             $mform->setDefault('config_display_career', '1');
         }
-
     }
 }
