@@ -33,7 +33,7 @@ use templatable;
 /**
  * Class containing data for infousers block.
  *
- * @copyright  2018 Mihail Geshoski <mihail@moodle.com>
+ * @copyright  2022 David Arias <dagoar08@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class infousers implements renderable, templatable {
@@ -49,50 +49,53 @@ class infousers implements renderable, templatable {
         global $USER, $OUTPUT, $DB;
 
         $data = new \stdClass();
-
+        $data->userfullname = "Pepito Perez";
         
-
-        $student = $DB->get_records('user');
-        foreach ($student as $id) {
-            # code...
-        }
-
-        //$fields = $DB->get_records('user_info_data');
-
-        return $data;
-
-
-
-       /*
-        * Still need get some data...
+        /**
+        * I'm still looking for a way to get the data for these variables.
         *
-        $totalusers = "numero total de usuarios registrados";
-        $idusers = "array con el id de todos los usuarios";
-        $editform = "el campo está habilitado o no";
+        */
+        $totalusers = 1;
+        $editform = 1;
 
-        for ($i=0; $i < $totalusers; $i++) { 
-            if($idusers == $idfield && $editform == 1) {
-                $data = $ifield->name . "<br>";
-            }
+        /**
+        * Get the custom fields.
+        *
+        */
+        $fields = $DB->get_records('user_info_data');
 
-            if($idusers == $idfield && $editform == 1) {
-                $data = $ifield->email . "<br>";
-            }
-
-            if($idusers == $idfield && $editform == 1) {
-                $data = $ifield->status . "<br>";
-            }
-
-            if($idusers == $idfield && $editform == 1) {
-                $data = $ifield->career . "<br>";
-            }
-
-            $data = "<hr>";
-
-            $idfield = i;
+        /**
+        * Get user's id.
+        *
+        */
+        $studentdata = $DB->get_records('user');
+        foreach ($studentdata as $id) {
+            $idusers = $id->id;
         }
 
+        /**
+        * Still need to fit the format...
+        *
         */
+        for ($i=0; $i < $totalusers; $i++) { 
+            foreach ($studentdata as $id) {
+                if ($idusers == $i && $editform == 1)
+                $data->data .= $id->firstname;
+                $data->data .= $id->email;
+            }
 
+            foreach ($fields as $id) {        
+                if ($id->fieldid == 1) {
+                    $data->data .= $id->data;
+                }
+
+                if ($id->fieldid == 3) {
+                    $data->data .= $id->data;
+                }
+            }
+        }
+        
+        return $data;
     }
+
 }

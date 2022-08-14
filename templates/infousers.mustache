@@ -43,33 +43,8 @@
         "usercareer": "Software engineer"
     }
 }}
-<div>
-    {{#userpicture}}
-    <div class="infousersitem picture">
-        {{{ userpicture }}}
-    </div>
-    {{/userpicture}}
-</div>
 <div class="w-100 no-overflow">
     <div class="infousersitem fullname">
-        {{ userfullname }}
+        {{ data }}
     </div>
-    {{#useremail}}
-        <div class="infousersitem email">
-             <span>{{#str}} email {{/str}}:</span>
-             {{{ useremail }}}
-        </div>
-    {{/useremail}}
-    {{#userstatus}}
-    <div class="infousersitem status">
-         <span>{{#str}} status {{/str}}:</span>
-         {{ userstatus }}
-    </div>
-    {{/userstatus}}
-    {{#user}}
-    <div class="infousersitem career">
-         <span>{{#str}} career {{/str}}:</span>
-         {{ user }}
-    </div>
-    {{/user}}
 </div>
