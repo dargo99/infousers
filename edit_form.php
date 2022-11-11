@@ -24,7 +24,9 @@ defined('MOODLE_INTERNAL') || die();
  * @author     Olav Jordan <olav.jordan@remote-learner.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_infousers_edit_form extends block_edit_form {
+
+
+/* class block_infousers_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
         global $CFG;
         $mform->addElement('header', 'configheader', get_string('infousers_settings', 'block_infousers'));
@@ -57,4 +59,4 @@ class block_infousers_edit_form extends block_edit_form {
             $mform->setDefault('config_display_career', '1');
         }
     }
-}
+} */
